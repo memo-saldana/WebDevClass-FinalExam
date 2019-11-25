@@ -82,8 +82,8 @@ function addTodo(id, todoText, completed) {
   if(completed){
     let completedTodo = todo
         .append(`<li>
-                    <input type="checkbox" name="todo" value="${id}" onchange="onChange(this)" checked>
-                    <span contenteditable="true" onblur="editTodo(this)">${todoText}</span>
+                    <input type="checkbox" name="todo" value="${id}" checked>
+                    <span>${todoText}</span>
                     <i class="fas fa-times" onclick="removeTodo(this)"></i>
                  </li>`)
     completedTodo.addClass('done');
@@ -91,9 +91,14 @@ function addTodo(id, todoText, completed) {
   else{
     todo
         .append(`<li>
-                    <input type="checkbox" name="todo" value="${id}" onchange="onChange(this)">
-                    <span contenteditable="true" onblur="editTodo(this)">${todoText}</span>
+                    <input type="checkbox" name="todo" value="${id}">
+                    <span>${todoText}</span>
                     <i class="fas fa-times" onclick="removeTodo(this)"></i>
                  </li>`)
   }
+}
+
+function logout(){
+  localStorage.removeItem("token");
+  window.location.replace("index.html");
 }
